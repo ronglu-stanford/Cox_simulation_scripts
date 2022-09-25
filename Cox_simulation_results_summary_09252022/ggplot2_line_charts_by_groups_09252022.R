@@ -92,7 +92,57 @@ multiplot <- function(..., plotlist = NULL, file, cols = 1, layout = NULL) {
   }
 }
 
-pdf("Four_panel_Summary_Plots_09252022.pdf",width=10.65*2 ,height=6.10*2)   ## the survival plots
+pdf("Four_panel_Summary_Plots_09252022.pdf",width=10.65*2 ,height=6.10*2)   ## Figure 1
 multiplot(plotlist =list( plot.3, plot.4,plot.1, plot.2), cols=2)
 dev.off()
 
+
+## ------------------------------------------------------------------
+
+
+tmp.data <- data[which(data$feature.corr==0 & !is.na(data$model.v2)),]
+plot.5 <- ggplot(data=tmp.data, aes(x=event.sample.size.factor, y=Sensitivity, group=model.v2, color=model.v2)) +
+  geom_line() + geom_point() + 
+  xlab("\nNumber of Events\n\n") + ylab("\n\nFeature Selection Sensitivity\n") + 
+  ggtitle("\n\nAll features are independent") + 
+  #labs(subtitle = expression(paste("\n\n[Assume 5 out of 10 true features (",rho,"=0) had data available]")) ) + 
+  labs(subtitle ="(Assume 5 out of 10 true features had data available)") + 
+  theme(plot.title = element_text(hjust = 0.5, face = "bold"), plot.subtitle = element_text(hjust = 0.5),legend.title= element_blank())
+## saved as "independent_features_sensitivity_09252022.pdf" (10.65 X 6.10)
+
+tmp.data <- data[which(data$feature.corr==0.8 & !is.na(data$model.v2)),]
+plot.6 <- ggplot(data=tmp.data, aes(x=event.sample.size.factor, y=Sensitivity, group=model.v2, color=model.v2)) +
+  geom_line() + geom_point() + 
+  xlab("\nNumber of Events\n\n") + ylab("\n\nFeature Selection Sensitivity\n") + 
+  ggtitle("\n\nAll true features are highly correlated") + 
+  #labs(subtitle = expression(paste("\n\n[Assume 5 out of 10 true features (",rho,"=0) had data available]")) ) + 
+  labs(subtitle ="(Assume 5 out of 10 true features had data available)") + 
+  theme(plot.title = element_text(hjust = 0.5, face = "bold"), plot.subtitle = element_text(hjust = 0.5),legend.title= element_blank())
+## saved as "correlated_features_sensitivity_09252022.pdf" (10.65 X 6.10)
+
+## -------------------------------------------------------
+
+tmp.data <- data[which(data$feature.corr==0 & !is.na(data$model.v2)),]
+plot.7 <- ggplot(data=tmp.data, aes(x=event.sample.size.factor, y=Specificity, group=model.v2, color=model.v2)) +
+  geom_line() + geom_point() + 
+  xlab("\nNumber of Events\n\n") + ylab("\n\nFeature Selection Specificity\n") + 
+  ggtitle("\n\nAll features are independent") + 
+  #labs(subtitle = expression(paste("\n\n[Assume 5 out of 10 true features (",rho,"=0) had data available]")) ) + 
+  labs(subtitle ="(Assume 5 out of 10 true features had data available)") + 
+  theme(plot.title = element_text(hjust = 0.5, face = "bold"), plot.subtitle = element_text(hjust = 0.5),legend.title= element_blank())
+## saved as "independent_features_specificity_09252022.pdf" (10.65 X 6.10)
+
+tmp.data <- data[which(data$feature.corr==0.8 & !is.na(data$model.v2)),]
+plot.8 <- ggplot(data=tmp.data, aes(x=event.sample.size.factor, y=Specificity, group=model.v2, color=model.v2)) +
+  geom_line() + geom_point() + 
+  xlab("\nNumber of Events\n\n") + ylab("\n\nFeature Selection Specificity\n") + 
+  ggtitle("\n\nAll true features are highly correlated") + 
+  #labs(subtitle = expression(paste("\n\n[Assume 5 out of 10 true features (",rho,"=0) had data available]")) ) + 
+  labs(subtitle ="(Assume 5 out of 10 true features had data available)") + 
+  theme(plot.title = element_text(hjust = 0.5, face = "bold"), plot.subtitle = element_text(hjust = 0.5),legend.title= element_blank())
+## saved as "correlated_features_specificity_09252022.pdf" (10.65 X 6.10)
+
+
+pdf("Sensitivity_Specificity_Summary_Plots_09252022.pdf",width=10.65*2 ,height=6.10*2)   ## Sup Figure 1
+multiplot(plotlist =list( plot.5, plot.6,plot.7, plot.8), cols=2)
+dev.off()
