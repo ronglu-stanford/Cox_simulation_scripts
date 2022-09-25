@@ -157,10 +157,10 @@ saved.sim.summary.tb.part1 <- saved.sim.summary.tb
 setwd("./Cox_simulation_scripts_09172022_results")
 all.files <- list.files()
 all.RData.files <- all.files[grep("RData",  all.files)]
-all.RData.files <- all.RData.files[c(1,5,9,13,
-                                     3,7,11,15,
-                                     2,6,10,14,
-                                     4,8,12,16)]
+all.RData.files <- all.RData.files[c(9,1,5,13,
+                                     11,3,7,15,
+                                     10,2,6,14,
+                                     12,4,8,16)]
 all.RData.files
 ## -----------------------------
 load(all.RData.files[1])
