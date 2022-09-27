@@ -1,6 +1,6 @@
 # Cox_simulation_scripts
 
-This is the code repository for the study titled "Why it might be important to encourage using Gaussian models for feature selection tasks with time-to-event outcome".
+This is the code repository for the study "When it might be important to encourage using Gaussian models for feature selection tasks with time-to-event outcome".
 
 All simulation scripts were ran in two batches on two separate dates. Please see folder [Cox_simulation_scripts_09172022_results](https://github.com/ronglu-stanford/Cox_simulation_scripts/tree/main/Cox_simulation_scripts_09172022_results) and folder [Cox_simulation_scripts_09192022_results](https://github.com/ronglu-stanford/Cox_simulation_scripts/tree/main/Cox_simulation_scripts_09192022_results).
 
